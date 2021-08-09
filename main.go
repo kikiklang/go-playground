@@ -4,15 +4,14 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/kikiklang/go-playground/maximum_length_difference"
+	"github.com/kikiklang/go-playground/multiple_of_index"
 )
 
 func main() {
 	start := time.Now()
-	a1 := []string{"hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"}
-	a2 := []string{"cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"}
+	x := []int{22, -6, 32, 82, 9, 25}
 	fmt.Println("**********************************")
-	fmt.Println(maximum_length_difference.MxDifLg(a1, a2))
+	fmt.Println(multiple_of_index.MultipleOfIndex(x))
 	fmt.Println("**********************************")
 	fmt.Println(time.Since(start))
 }
