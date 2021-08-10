@@ -4,14 +4,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/kikiklang/go-playground/multiple_of_index"
+	"github.com/kikiklang/go-playground/sum_of_cubes"
 )
 
 func main() {
 	start := time.Now()
-	x := []int{22, -6, 32, 82, 9, 25}
 	fmt.Println("**********************************")
-	fmt.Println(multiple_of_index.MultipleOfIndex(x))
+	fmt.Println(sum_of_cubes.SumCubes(10000))
 	fmt.Println("**********************************")
 	fmt.Println(time.Since(start))
 }
