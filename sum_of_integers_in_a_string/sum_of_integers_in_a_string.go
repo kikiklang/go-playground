@@ -37,12 +37,14 @@ import (
 // }
 
 func SumOfIntegersInString(strng string) int {
-	re := regexp.MustCompile("[0-9]+")
+	regex := regexp.MustCompile("[0-9]+")
+	stringNumberArray := regex.FindAllString(strng, -1)
 	sum := 0
 
-	for _, i := range re.FindAllString(strng, -1) {
+	for _, i := range stringNumberArray {
 		number, _ := strconv.Atoi(i)
 		sum += number
 	}
+
 	return sum
 }
