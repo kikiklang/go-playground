@@ -1,19 +1,46 @@
 package performance_check
 
 import (
+	"fmt"
+	"sort"
+
 	"github.com/jaswdr/faker"
 )
 
-func Format5000Name(dataSetSize int) []string {
-	faker := faker.New()
-	person := faker.Person()
-	var persons = make([]string, dataSetSize)
+func FormatPets(dataSetSize int) []string {
+	fakePet := faker.New().Pet()
+	petsArray := make([]string, dataSetSize)
 
 	for i := 0; i < dataSetSize; i++ {
-		persons[i] = person.Name()
+		petsArray[i] = fakePet.Name()
 	}
 
-	return persons
+	if !sort.StringsAreSorted(petsArray) {
+		sort.Strings(petsArray)
+		return removeDuplicate(petsArray)
+	}
+
+	return removeDuplicate(petsArray)
+
 }
 
-// 5.93316ms
+func removeDuplicate(petsArray []string) []string {
+	originalLength := len(petsArray)
+	keys := make(map[string]bool)
+	list := []string{}
+
+	for _, entry := range petsArray {
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			list = append(list, entry)
+		}
+	}
+
+	afterFilteringLength := len(list)
+
+	fmt.Printf("original length was: %d \n", originalLength)
+	fmt.Printf("length after filtering: %d \n", afterFilteringLength)
+	fmt.Printf("number of removed items: %d \n", originalLength-afterFilteringLength)
+
+	return list
+}
